@@ -20,6 +20,8 @@ public static class ServiceCollectionExtensions
         services.AddAuthenticationInternal();
         services.AddUnitOfWork();
         services.AddRepositories();
+
+        services.AddScoped<IPasswordHasher, PasswordHasher>();
     }
 
     private static void ConfigureDbContext(this IServiceCollection services, string connectionString)

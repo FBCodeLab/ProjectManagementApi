@@ -77,24 +77,6 @@ public sealed class User : Entity<UserId>
                                  .WithDescription("User created successfully.");
     }
 
-    public DomainResult<User> SetPasswordHash(string passwordHash)
-    {
-        List<string> errors = [];
-
-        if (string.IsNullOrWhiteSpace(passwordHash)) errors.Add(DomainErrors.UserErrors.PASSWORD_NOT_EMPTY);
-
-        if(passwordHash.Length > Rules.PASSWORD_MAX_LENGTH) errors.Add(DomainErrors.UserErrors.PASSWORD_TOO_LONG);
-
-        if(errors.Count > 0)
-        {
-            return DomainResult<User>.Failure(errors);
-        }
-
-        Password = passwordHash;
-        return DomainResult<User>.Success(this);
-
-    }   
-
     public DomainResult<User> Update(
        string? firstName,
        string? lastName,

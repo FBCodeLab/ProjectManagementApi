@@ -24,8 +24,7 @@ public static class BaseEntityConfig
                .ValueGeneratedOnAdd();
 
         builder.Property(e => e.UpdatedAt)
-               .HasColumnType("datetime")
-               .ValueGeneratedOnUpdate();
+               .HasColumnType("datetime");
 
         builder.Property(e => e.DeletedAt)
                .HasColumnType("datetime");
